@@ -1,0 +1,53 @@
+
+<div class="container my-5 ">
+  <div class="row justify-content-center">
+    <div class="col-md-12 col-lg-10">
+      <div class="card border-0 shadow">
+        <div class="card-body">
+          <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <div class="mb-1 align-items-center" style="margin-top: 20px">
+              <div class="rating" >
+                <input  type="radio" id="star1" name="star-rating" value="5" (click)="setRating(5)">
+                <label for="star1"></label>
+                <input type="radio" id="star2" name="star-rating" value="4" (click)="setRating(4)">
+                <label for="star2"></label>
+                <input type="radio" id="star3" name="star-rating" value="3" (click)="setRating(3)">
+                <label for="star3"></label>
+                <input type="radio" id="star4" name="star-rating" value="2" (click)="setRating(2)">
+                <label for="star4"></label>
+                <input type="radio" id="star5" name="star-rating" value="1" (click)="setRating(1)">
+                <label for="star5"></label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" id="comment" rows="4" formControlName="comment" placeholder="Ajouter un commentaire ..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-success" style="width: 120px; float: right" >Poster</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-0 ">
+  <div class="row justify-content-center">
+    <div class="col-md-12 col-lg-10"> <!-- Ajustement de la largeur de la colonne -->
+      <div class="card border-0 shadow">
+        <div class="card-body">
+          <div *ngFor="let comment of list" class="mb-4">
+            <div class="d-flex align-items-center mb-2">
+              <div class="rounded-circle bg-secondary me-3" style="width: 40px; height: 40px;"></div>
+              <div>
+                <h6 class="fw-bold mb-1">{{ comment.nom }} {{ comment.prenom }}</h6>
+                <ngb-rating [rate]="comment.evaluation" [max]="5" [readonly]="true"></ngb-rating>
+              </div>
+            </div>
+            <p class="mb-0">{{ comment.commentaire }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

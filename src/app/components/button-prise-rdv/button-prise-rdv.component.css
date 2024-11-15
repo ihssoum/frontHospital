@@ -1,0 +1,55 @@
+
+.fa{
+  margin-left: 8px ;
+}
+.mat-mdc-menu-item {
+  min-height: 20px;
+  font-size: 7px;
+}
+.FirstButton{
+  font-size: 13px;
+  height: 30px;
+  background-color: #fcbf49;
+  border: none;
+  border-radius: 13px;
+  width: 140px;
+  padding: 3px 10px;
+  color: white;
+  margin-bottom: 10px;
+  margin-left: 110px;
+  margin-top: 7px;
+}
+.SecondButton{
+  font-size: 7px;
+  background-color: white;
+  box-shadow: #888888;
+  border: none;
+  border-radius: 13px;
+  width: 140px;
+  padding: 0 10px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+ngb-rating{
+  font-size: 20px;
+  margin-left: 15px;
+  margin-bottom: 7px;
+}
+.btn-close{
+  font-size: 10px;
+  margin-left: 275px;
+  margin-top: 10px;
+}
+
+.doctor{
+  font-size: 23px; margin-left: 15px;margin-top: 40px
+}
+.container{
+  background-color:#f8f8f8;
+  width: 630px;
+  height: 1600px;
+  display: flow;
+}
+

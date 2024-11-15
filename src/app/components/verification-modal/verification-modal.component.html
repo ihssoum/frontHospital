@@ -1,0 +1,88 @@
+
+
+
+<div class="card mx-auto " style="max-width: 800px;">
+    <div class="card-header">
+        code de vérification
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Entrez le code de confirmation reçu par texto</h5>
+      <p class="card-text">Indiquez que ce compte email vous appartient. Entrez le code du texto envoyé au {{verif.to}} </p>
+      <form [formGroup]="verifForm">
+        <input type="text" id="codeVerif" formControlName="codeVerif">
+        <div *ngIf="successClicked" id="messageContainer">
+            <div *ngIf="isSuccess" >
+                <div style="color: green;">
+                    votre compte est crée avec success
+                </div>
+            </div>
+            <div *ngIf="!isSuccess" >
+                <div style="color: red;">
+                    code verification faux
+                </div>
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-success" (click)="ajouterPatient()">Confirmer</button><br>
+        
+        </div>
+       
+    </form>
+   
+    </div>
+    
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

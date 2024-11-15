@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6"style="margin-top: 20px">
+      <span style="font-size: 23px; margin-left: 15px;">{{ doctor.nom }} {{ doctor.prenom }}</span>
+      <span style="font-size: 15px; color: #888888; margin-left: 7px">{{ doctor.specialite }}</span><br>
+      <ngb-rating [rate]="Math.ceil(doctor.moyenneRatings)" [max]="5" [readonly]="true"></ngb-rating>
+      <span style="color: grey; font-size: 13px; margin-left: 5px;">({{ doctor.moyenneRatings }})</span>
+    </div>
+    <div class="col-md-6">
+      <button class="btn-close" aria-label="Close" (click)="closeModal()">
+      </button>
+      <button class="FirstButton" mat-button [matMenuTriggerFor]="menu">{{ selectedOption }}
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item class="SecondButton" style="font-size: 13px" (click)="toggleOption()">{{ leftOption }}</button>
+      </mat-menu>
+    </div>
+  </div>
+
+  <div class="row" style="padding: 0 10px">
+    <div class="col-md-12" >
+      <div *ngIf="showPourSoi">
+        <app-rdvpour-soi></app-rdvpour-soi>
+      </div>
+      <div *ngIf="!showPourSoi">
+        <app-liste-rdv></app-liste-rdv>
+      </div>
+    </div>
+  </div>
+</div>
+
+

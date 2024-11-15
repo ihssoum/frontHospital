@@ -1,0 +1,39 @@
+p{
+  font-size: 14px;
+  font-family: "Arial", sans-serif;
+  color: #444444;
+}
+
+.FirstButton{
+  font-size: 13px;
+  height: 30px;
+  background-color: #6B93FB;
+  border: none;
+  border-radius: 13px;
+  width: 140px;
+  padding: 3px 10px;
+  color: white;
+  margin-bottom: 10px;
+  margin-left: 120px;
+  margin-top: 1px;
+}
+.content{
+  margin-left: 10px;
+  font-size: 13px;
+  color: #666666;
+}
+
+.label {
+  display: inline-block;
+  width: 70px;
+  color: #666666;
+
+}
+.alert {
+  width: 570px;
+  height: 20px;
+  display: flex;
+  margin-left: 0px;
+  align-items: center;
+}
+

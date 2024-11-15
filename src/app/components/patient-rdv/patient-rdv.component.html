@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-header bg-97E4F6 text-white">Vos rendez-vous</div>
+  <div *ngIf="rdv$ | async as rdvList; else loading">
+    <ul class="list-group">
+      <li *ngFor="let rdv of rdvList" class="list-group-item">
+        <div class="d-flex align-items-center justify-content-between">
+          <span class="badge bg-secondary rounded-circle me-3" style="width: 40px; height: 40px; font-size: 18px; display: flex; justify-content: center; align-items: center;">{{ rdv.numeroOrdre }}</span>
+          <div class="flex-grow-1">
+            <div class="row">
+              <div class="col-md-2">
+                <h6 class="mb-0" style="font-weight: normal">{{ rdv.nomM }} {{ rdv.prenomM }}</h6>
+              </div>
+              <div class="col-md-2">
+                <h6  class="text-muted mb-0" style="font-weight: normal ;font-size: 14px ">{{ rdv.date | date: 'dd/MM/yyyy '}}</h6>
+              </div>
+              <div class="col-md-2">
+                <p class="mb-0" style="font-size: 16px ;font-weight: 500" [ngStyle]="{ color: rdv.status === 'valide' ? 'green' : 'orange' }">{{ rdv.status }}</p>
+              </div>
+              <div class="col-md-2">
+                <p *ngIf="rdv.status === 'valide'" class=" mb-0" style="font-size: 14px;">{{ rdv.dateV | date: 'dd/MM/yyyy HH:mm'  }}</p>
+              </div>
+              <div class="col-md-4 d-flex justify-content-end">
+                <img src="assets/icones/up.png" style="width: 30px; height: 30px ;margin-top: 5px" (click)="ReporterRdv(rdv.id)" class="me-3">
+                <img src="assets/icones/supp.png" style="width: 35px;" (click)="AnnulerRdv(rdv.id)">
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <ng-template #loading>
+    <p>Loading...</p>
+  </ng-template>
+</div>
+<div>
+  <app-rvd-amis></app-rvd-amis>
+</div>

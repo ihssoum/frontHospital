@@ -1,0 +1,15 @@
+
+  
+  label.required::after {
+    content: "*";
+    color: red;
+    margin-left: 2px;
+  }
+  .form-control-lg {
+    font-size: 14px; /* Définissez la taille de la police selon vos besoins */
+}
+
+
+.btn-long {
+  width: 50%;
+}

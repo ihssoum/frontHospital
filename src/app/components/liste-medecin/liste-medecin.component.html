@@ -1,0 +1,94 @@
+<div style="margin-left: 10px; margin-right: 10px;">
+  <div class="row">
+    <div class="col-md-6">
+  <div class="input-group input-group-sm mb-3" style="width: 500px; margin-top: 30px;margin-bottom: 0">
+    <input type="text" class="form-control rounded-pill" matInput
+           [matAutocomplete]="auto" placeholder="Rechercher" aria-label="Search" aria-describedby="button-addon"
+           [formControl]="searchTerm"
+           >
+    <button class="btn" type="button" id="button-addon" (click)="searchMedecin()">
+      <i class="fa fa-search" ></i>
+    </button>
+  </div>
+    </div>
+    <div class="col-md-6" >
+  <button class ="filterButton" mat-button [matMenuTriggerFor]="menu" (click)="fetchAllDepts()">
+      Filtrer
+      <i class="fa fa-caret-down" style="margin-left: 10px"></i>
+    </button>
+    <mat-menu #menu="matMenu">
+      <ng-container *ngFor="let dept of deptNames">
+        <button mat-menu-item class="deptNames" style="font-size: 13px" (click)="onClickOption(dept)">{{ dept }}</button>
+      </ng-container>
+    </mat-menu>
+  </div>
+  </div>
+  <div *ngIf="successMessage" class="alert alert-success ">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="message" class="alert alert-warning">
+    {{message}}
+    <button (click)="removeAlert()" class="btn-close">
+    </button>
+  </div>
+
+
+  <div style="margin-left: 30px; margin-bottom: 20px; margin-right: 30px; height: 5px;">
+    <div *ngIf="noResultsFound" class="alert alert-warning" role="alert">
+      Aucun médecin trouvé.
+    </div>
+  </div>
+</div>
+
+<mat-autocomplete #auto="matAutocomplete" class="mat-autocomplete-panel" >
+    <mat-option *ngFor="let doctor of filteredOptions | async"  (click)="searchMedecin()" [value]="doctor.nom + ' ' + doctor.prenom" >
+      {{ doctor.nom }} {{ doctor.prenom }}
+    </mat-option>
+  </mat-autocomplete>
+
+
+
+<div class="row row-cols-1 row-cols-md-5 g-5 me-5 ms-5 mb-2 pt-1" >
+  <div class="col" *ngFor="let doctor of doctors | paginate: { itemsPerPage:itemsPerPage , currentPage: p }">
+    <div style="max-width: 230px;  border-radius: 13px;height: 212px;border: none;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);position: relative">
+   <div class="rectangle"></div>
+      <div class="card-body" style="padding: 10px; background-color: white ;border-radius: 13px">
+        <div class="d-flex justify-content-center mb-3">
+          <div class="rounded-circle overflow-hidden" style="margin-top: 7px ;width: 70px; height: 70px; position: relative; z-index: 1; border:3px solid #6B93FB;">
+            <img src="assets/images/projet.jpg" class="card-img-top"
+                 alt="Skyscrapers" class="w-100 h-100">
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-start " >
+          <div>
+            <h6 class="card-title" style="margin: 0; font-size: smaller;">{{ doctor.nom }} {{ doctor.prenom }}</h6>
+          </div>
+          <div class="text-end flex-grow-1">
+            <p class="card-text text-secondary" style="margin: 0; font-size: smaller;">{{ doctor.specialite }}</p>
+          </div>
+        </div>
+        <p class="card-text" style="margin: 0;margin-left: 2px;margin-right: 2px; font-size: smaller;">
+          <span style="color: grey; font-size: smaller; margin-right: 5px;">Contactez nous :</span>
+          <span style="color: grey; font-size: smaller;">{{ doctor.telDept }}</span>
+        </p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <ngb-rating [rate]="Math.ceil(doctor.moyenneRatings)" [max]="5" [readonly]="true"></ngb-rating>
+            <span style="color: grey; font-size: smaller;">({{ doctor.moyenneRatings }})</span>
+          </div>
+          <div>
+            <a (click)="ratings(doctor.cin)"
+               style="cursor: pointer; text-decoration: underline; color: grey;font-size: smaller;">{{ doctor.numComments }} Avis</a>
+          </div>
+        </div>
+        <button class="btn btn-card" style="box-sizing: border-box; padding: 3px 10px; background-color: #219ebc; color: white; font-size: smaller;"
+                (click)="prendreRendezVous(doctor.cin)">Prendre rendez-vous</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div *ngIf="totalPages > 1" class="at-8 py-5 flex justify-center items-center" >
+  <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+
+</div>

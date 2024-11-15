@@ -1,0 +1,62 @@
+.center-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input{
+  height: 27px;
+  width: 250px;
+  border-radius: 7px;
+  margin-bottom: 7px;
+  font-size: 13px;
+}
+button{
+  height: 30px;
+  width: 140px;
+  justify-content: center;
+ font-size: small;
+  padding: 2px 10px;
+  background-color: #6B93FB;
+  border: none;
+  border-radius: 30px;
+  margin-bottom: 30px;
+  margin-left: 105px;
+
+}
+label.required::after {
+  content: "*";
+  color: red;
+  margin-left: 2px;
+}
+label{
+  font-size: 13px;
+}
+
+input:focus {
+  border-color: #6B93FB; /* Change the border color to a lighter color */
+  box-shadow: none; /* Remove any box shadow */
+}
+.alert {
+  width: 570px;
+  height: 20px;
+  display: flex;
+  margin-left: 0px;
+  align-items: center;
+}
+
+
+.fade-out {
+  animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+

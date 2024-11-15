@@ -1,0 +1,76 @@
+<div class="container">
+  <h2 class="text-uppercase text-center mb-5">Creer votre compte</h2>
+  <form [formGroup]="inscriptionForm" >
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-4">
+        <div class="form-group mb-4">
+          <div data-mdb-input-init class="form-outline mb-4" >
+            <label class="form-label" for="cin" >Nom</label>
+            <input type="text" id="nom" class="form-control form-control-lg" formControlName="nom" placeholder="Nom" >
+    
+          </div>
+          <div data-mdb-input-init class="form-outline mb-4" >
+            <label class="form-label"  for="validationServer05" class="required">Cin</label>
+            <input type="text" id="cin" class="form-check-input is-invalid" aria-describedby="validationServer05Feedback" class="form-control form-control-lg" formControlName="cin" placeholder="Cin" (keyup)="checkDuplicateCin()" required>
+            <div *ngIf="cinValid" class="text-danger">déja existe.</div>
+          
+          </div>
+          <div data-mdb-input-init class="form-outline mb-4" >
+            <label class="form-label" for="tel" class="required">Téléphone</label>
+            <input type="text" id="tel" class="form-control form-control-lg" formControlName="tel" placeholder="Téléphone" required>
+          </div>
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="dateN">Date de naissance</label>
+            <input type="date" id="dateN" class="form-control form-control-lg" formControlName="dateN">
+            
+          </div>
+          <div data-mdb-input-init class="form-outline mb-4" >
+            <label class="form-label" for="mdp" class="required">Mot de passe</label>
+            <input type="password" id="mdp" class="form-control form-control-lg" formControlName="mdp" placeholder="Mot de passe" required>
+    
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div data-mdb-input-init class="form-outline mb-4">
+          <label class="form-label" for="prenom">Prénom</label>
+          <input type="text" id="prenom"  class="form-control form-control-lg" placeholder="Prénom" formControlName="prenom"  >
+        </div>
+        <div data-mdb-input-init class="form-outline mb-4">
+          <label class="form-label" for="adresse">Adresse</label>
+          <input type="text" id="adresse" class="form-control form-control-lg" formControlName="adresse" placeholder="Adresse" >
+        </div>
+        <div data-mdb-input-init class="form-outline mb-4">
+          <label class="form-label" for="email" class="required">Email</label>
+          <input type="email" id="email" class="form-control form-control-lg" formControlName="email" placeholder="Email" required (keyup)="checkEmail()">
+          <div class="invalid-feedback">Veuillez fournir une adresse email valide.</div>
+          <div *ngIf="!validEmail" class="text-danger">L'e-mail doit contenir le caractère  &#64;
+          </div>
+        </div>
+        <div data-mdb-input-init class="form-outline mb-4" >
+          <label class="form-label" for="username" class="required">Nom d'utilisateur</label>
+          <input type="text" id="username" class="form-control form-control-lg" formControlName="username" placeholder="Nom d'utilisateur" (keyup)="checkDuplicateUsername()" required >
+          <div *ngIf="userValid" class="text-danger">déja existe.</div>
+          <div class="invalid-feedback">Veuillez choisir un nom d'utilisateur.</div>
+        </div>
+        <div data-mdb-input-init class="form-outline mb-4" >
+          <label class="form-label" for="repeatPassword" class="required">Répéter le mot de passe</label>
+          <input type="password" id="repeatPassword" formControlName="repeatPassword"  class="form-control form-control-lg" placeholder="Répéter le mot de passe" (keyup)="checkPasswordMatch()" required>
+          <div class="invalid-feedback">Veuillez répéter votre mot de passe.</div>
+          <div *ngIf="!passwordsMatch" class="text-danger">Les mots de passe ne correspondent pas.</div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-success  w-50 btn-long" (click)="verifierInscription()" [disabled]="!inscriptionForm.valid">
+  Register
+</button>
+
+        <div class="row justify-content-center align-items-center mt-6">
+          <p class="text-muted">Vous avez déjà un compte? <a href="#" class="fw-bold text-body"><u>Login here</u></a></p>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

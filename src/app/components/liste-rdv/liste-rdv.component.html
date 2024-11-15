@@ -1,0 +1,59 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div *ngIf="existingRdvMessage" class="alert alert-warning  ">
+      {{ existingRdvMessage }}
+    </div>
+    <div *ngIf="successMessage" class="alert alert-success fade-out">
+      {{ successMessage }}
+    </div>
+
+    <div *ngIf="appointementExceededAlert" class="alert alert-warning ">
+      {{ appointementExceededAlert }}
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="cin" class="required">CIN :</label>
+          <input type="text" id="cin" formControlName="cin" class="form-control" required>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="nom" class="required">Nom :</label>
+          <input type="text" id="nom" formControlName="nom" class="form-control" required>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="prenom" class="required">Prénom :</label>
+          <input type="text" id="prenom" formControlName="prenom" class="form-control" required>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="tel" class="required">Téléphone :</label>
+          <input type="text" id="tel" formControlName="tel" class="form-control" required>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="required">Email :</label>
+      <input type="email" id="email" formControlName="email" class="form-control" required>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <app-dates></app-dates>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"></div>
+      <div class="col-md-6">
+    <button type="submit" class="btn"
+            [ngClass]="{'btn-primary': myForm.valid, 'btn-secondary': !myForm.valid}"
+            [disabled]="!myForm.valid || appointmentLimitExceeded">Confirmer</button>
+      </div>
+    </div>
+  </div>
+</form>

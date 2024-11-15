@@ -1,0 +1,31 @@
+<div *ngIf="selectedDay">
+  <p>Date choisie : {{selectedDay| date:'d EEE MMM' :'':'fr'}} {{selectedHour}}
+  </p>
+</div>
+  <div class="days-container">
+    <div *ngFor="let day of groupedDates | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPageDays, id: 'myPagination'}">
+      <button class="day-item" [disabled]="day.state === 1" (click)="showAvailableHours(day.day)" (click)="toggleButtonColor(day)"
+              [style.background-color]="day.clicked ? '#007bff' : 'initial'"
+              [style.color]="day.clicked ? 'white' : (day.state === 1 ? 'grey' : 'black')">
+        {{ day.day | date:'d EEE MMM' :'':'fr' }}
+      </button>
+    </div>
+  </div>
+  <div *ngIf="totalPages > 1"  >
+  <pagination-controls id="myPagination" (pageChange)="currentPageDays = $event" ></pagination-controls>
+</div>
+
+<div *ngIf="selectedDay">
+  <div class="days-container"  >
+    <div *ngFor="let hour of groupedHours | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPageHours ,id: 'd' }">
+      <button class="day-item" [disabled]="hour.state === 1" (click)="toggleButtonColor(hour)" (click)="selectedTime(hour.hour)"
+              [style.background-color]="hour.clicked ? '#007bff' : 'initial'"
+              [style.color]="hour.clicked ? 'white' : (hour.state === 1 ? 'grey' : 'black')">
+        {{ hour.hour }}
+      </button>
+    </div>
+  </div>
+<div *ngIf="totalPages > 1" >
+  <pagination-controls (pageChange)="currentPageHours = $event" id="d"></pagination-controls>
+</div>
+</div>

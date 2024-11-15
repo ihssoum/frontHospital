@@ -1,0 +1,36 @@
+
+.doctor-image img {
+  object-fit: cover;
+  width:1440px;
+  z-index: -1;
+}
+
+.message-container {
+  position: absolute;
+  font-family: 'Roboto Light', sans-serif;
+  top: 180px;
+  margin-left: 50px;
+  width: 100%;
+  padding: 50px;
+  z-index: 1000;
+  font-size: 47px;
+  color: #444444;
+}
+.RDV{
+  position: absolute;
+  top: 380px;
+  margin-left: 100px;
+  background-color: #fcbf49;
+  width: 180px;
+  height: 40px;
+  border-radius: 13px;
+  color: white;
+  border: none;
+  font-size: 17px;
+  font-weight: 500;
+}
+.right-arrow {
+  margin-left: 8px;
+  width: 20px ;
+  height: 27px;
+  font-weight: bold}
